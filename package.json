@@ -1,27 +1,16 @@
 {
   "name": "https-localhost",
-  "version": "4.4.2",
+  "version": "5.0.0",
   "description": "HTTPS server running on localhost",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
-    "test": "node node_modules/nyc/bin/nyc.js node_modules/mocha/bin/_mocha --exit",
-    "posttest": "node node_modules/nyc/bin/nyc.js report --reporter=lcov",
-    "coveralls": "node node_modules/nyc/bin/nyc.js report --reporter=text-lcov | node_modules/coveralls/bin/coveralls.js",
-    "preuninstall": "node certs.js -u",
-    "build": "pkg --out-path build .",
-    "start": "node index.js"
+    "build": "tsc",
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "sserve": "index.js"
-  },
-  "pkg": {
-    "scripts": "*.js",
-    "targets": [
-      "node10-macos-x64",
-      "node10-linux-x64",
-      "node10-win-x64"
-    ]
   },
   "repository": {
     "type": "git",
@@ -32,32 +21,41 @@
     "https",
     "http2",
     "https-server",
-    "SSL",
-    "express",
-    "expressjs",
-    "express-js"
+    "ssl",
+    "tsl",
+    "certification-authority",
+    "certificate",
+    "local-development",
+    "pwa",
+    "spa"
   ],
   "author": "Aldo D'Aquino",
   "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/daquinoaldo/https-localhost/issues"
   },
-  "homepage": "https://daquinoaldo.github.io/https-localhost",
-  "dependencies": {
-    "appdata-path": "^1.0.0",
-    "express": "^4.17.1"
-  },
+  "homepage": "https://github.com/daquinoaldo/https-localhost#readme",
   "devDependencies": {
-    "coveralls": "^3.0.9",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^7.0.1",
-    "nyc": "^15.0.0",
-    "pkg": "^4.4.3",
-    "sinon": "^9.0.0"
+    "@types/finalhandler": "^1.1.0",
+    "@types/node": "^13.7.6",
+    "@types/serve-static": "^1.13.3",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.8.2"
+  },
+  "dependencies": {
+    "devcert": "^1.1.0",
+    "finalhandler": "^1.1.2",
+    "serve-static": "^1.14.1",
+    "update-notifier": "^4.1.0"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "**/*.spec.ts"
+    ],
+    "exec": "npm run build && node ."
   }
 }
