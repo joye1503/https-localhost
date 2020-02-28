@@ -2,8 +2,8 @@
   "name": "https-localhost",
   "version": "5.0.0",
   "description": "HTTPS server running on localhost",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/cli.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon",
@@ -39,6 +39,7 @@
     "@types/finalhandler": "^1.1.0",
     "@types/node": "^13.7.6",
     "@types/serve-static": "^1.13.3",
+    "@types/update-notifier": "^4.1.0",
     "nodemon": "^2.0.2",
     "typescript": "^3.8.2"
   },
